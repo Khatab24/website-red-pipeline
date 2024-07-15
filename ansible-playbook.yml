@@ -11,12 +11,14 @@
       command: docker rm web-container
       ignore_errors: yes
 
-    - name: remove comingsoon-image
+    - name: remove RedStore-image
       command: docker rmi khatab24/RedStore
       ignore_errors: yes
 
     - name: build docker image using the Dockerfile
-      command: docker build -t khatab24/RedStore .
+      command: docker build -t khatab24/redstore .
+      register: build_result
+      ignore_errors: no
 
     - name: Push Image to dockerhub
       command: docker push khatab24/RedStore
